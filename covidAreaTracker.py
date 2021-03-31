@@ -1,6 +1,7 @@
 #Test
 import json
 import urllib.request
+import geocoder
 
 userLimit = input("Please enter the limit of records for your data set: ")
 userLocation = input("Enter your area's id (within your limit)")
@@ -9,9 +10,11 @@ req = urllib.request.Request(url)
 with urllib.request.urlopen(req) as response:
    responseData = response.read()
 
+g = geocoder.ip('me')
+print(g.latlng)
+
 responseStr = str(responseData, 'utf-8')
 responseJson = json.loads(responseStr)
-
 #print("Response: ", responseJson)
 print("=====================================")
 records = responseJson['result']['records']

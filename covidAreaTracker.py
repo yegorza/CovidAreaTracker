@@ -1,9 +1,8 @@
 #Test
 import json
 import urllib.request
-<<<<<<< HEAD
+
 import geocoder
-=======
 import geopy
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import rate_limiter
@@ -12,7 +11,7 @@ import pandas as pd
 from ipyleaflet import Map, AntPath, MeasureControl
 import ipywidgets
 from vega_datasets import data as vds 
->>>>>>> e55cf3f22393c91108308a7d2208e3f2c5f1723e
+
 
 userLimit = input("Please enter the limit of records for your data set: ")
 userLocation = input("Enter your area's id (within your limit)")

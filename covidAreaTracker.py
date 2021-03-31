@@ -20,5 +20,5 @@ for record in records:
    #Print out the health centre status based on user's location
    if(int(userLocation) == record['_id']):
        print("In your current location these are the requirements: ")
-       print("Id: ", record['_id'],"Health Unit:", record['Reporting_PHU'],"Status: ", record['Status_PHU'] )
+       print("Id: ", record['_id'],"Health Unit:", record['Reporting_PHU'],"Status: ", record['Status_PHU'])
 

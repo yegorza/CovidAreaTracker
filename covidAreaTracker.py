@@ -5,12 +5,11 @@ import urllib.request
 import geocoder
 import geopy
 from geopy.geocoders import Nominatim
-from geopy.extra.rate_limiter import rate_limiter
 from geopy import distance
 import pandas as pd 
 from ipyleaflet import Map, AntPath, MeasureControl
 import ipywidgets
-from vega_datasets import data as vds 
+
 
 
 userLimit = input("Please enter the limit of records for your data set: ")

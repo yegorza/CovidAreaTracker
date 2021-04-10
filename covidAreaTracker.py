@@ -4,6 +4,8 @@ import urllib.request
 
 import geocoder
 import geopy
+from turfpy.measurement import boolean_point_in_polygon
+from geojson import Point, Polygon, Feature
 from geopy.geocoders import Nominatim
 from geopy import distance
 import pandas as pd 
@@ -19,8 +21,24 @@ req = urllib.request.Request(url)
 with urllib.request.urlopen(req) as response:
    responseData = response.read()
 
-g = geocoder.ip('me')
-print(g.latlng)
+userPoint = geocoder.ip('')
+print("User Point",userPoint.latlng)
+
+#Link to library: https://geocoder.readthedocs.io/
+userPointCheck = Feature(geometry=Point((userPoint.latlng[0],userPoint.latlng[1])))
+print("User Point Check",userPointCheck)
+polygon = Polygon(
+   [
+        [
+            (43.714918, -79.394262),
+            (43.712859, -79.435642),
+            (43.689078, -79.429889),
+            (43.692187, -79.385602)
+        ]
+    ]
+)
+print("Check point inside polygon: ",boolean_point_in_polygon(userPointCheck, polygon))
+
 
 responseStr = str(responseData, 'utf-8')
 responseJson = json.loads(responseStr)

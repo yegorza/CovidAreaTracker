@@ -1,4 +1,4 @@
-#Test
+#CovidAreaTracker
 import json
 import urllib.request
 

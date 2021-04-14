@@ -1,7 +1,6 @@
 #CovidAreaTracker
 import json
 import urllib.request
-
 import geocoder
 import geopy
 from turfpy.measurement import boolean_point_in_polygon

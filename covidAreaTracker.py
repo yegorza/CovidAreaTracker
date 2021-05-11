@@ -28,6 +28,7 @@ def getPolygonFromStr(geocodesString):
 #Get User Point
 userPoint = geocoder.ip('')
 userPointCheck = Feature(geometry=Point((userPoint.latlng[0],userPoint.latlng[1])))
+
 #Convert Health Unit Strings to Polygon
 waterlooHealthRegionPolygon = getPolygonFromStr(healthUnitCoordinateStrings.waterlooHealthRegionStr)
 yorkRegionPolygon = getPolygonFromStr(healthUnitCoordinateStrings.yorkRegionPublicHealthStr)

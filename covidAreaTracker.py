@@ -28,7 +28,11 @@ def getPolygonFromStr(geocodesString):
 def convertToReadableDate(dateValue):
     convertedDate = datetime.datetime.strptime(dateValue, '%Y-%m-%dT%H:%M:%S')
     readableDate = datetime.datetime.strftime(convertedDate,'%B %d, %Y')
-    return readableDate
+    month = datetime.datetime.strftime(convertedDate,'%m')
+    day = datetime.datetime.strftime(convertedDate,'%d')
+    year = datetime.datetime.strftime(convertedDate,'%y')
+
+    return readableDate, month, day, year
 
 def getHealthUnitStatusFromAPI(healthUnitId):
     userLimit = 500
@@ -43,7 +47,7 @@ def getHealthUnitStatusFromAPI(healthUnitId):
         print("=====================================")
         records = responseJson['result']['records']
 
-    lastStatusRecord = records[len(records)]
+    # lastStatusRecord = len(records)
 
     print("======HISTORY OF STATUSES======")
     for record in records:
@@ -53,9 +57,16 @@ def getHealthUnitStatusFromAPI(healthUnitId):
            print("In your current location these are the requirements: ")
            print("Health Unit Id: ", record['Reporting_PHU_id'], "Id: ", record['_id'],"Health Unit:", record['Reporting_PHU'])
            print("Status: ", record['Status_PHU'])
-           print("Start Date: ",convertToReadableDate(record['start_date']))
-           print("End Date: ",convertToReadableDate(record['end_date']))
+        #    print("Start Date: ",convertToReadableDate(record['start_date']))
+        #    print("End Date: ",convertToReadableDate(record['end_date']))
+           dateTuple = convertToReadableDate(record['start_date'])
+           print(dateTuple[0])
            print("===========================")
+        
+
+
+
+
        #else:
            #print("SKIPPING: Id: ", record['_id'],"Health Unit:", record['Reporting_PHU'],"Status: ", record['Status_PHU'],"Health Unit Id: ", record['Reporting_PHU_id']) 
 

@@ -43,8 +43,6 @@ def getHealthUnitStatusFromAPI(healthUnitId):
         print("=====================================")
         records = responseJson['result']['records']
 
-    #lastStatusRecord = records[len(records)]
-
     healthUnitRecords = []
     for record in records:
        #print("Record: ", record)

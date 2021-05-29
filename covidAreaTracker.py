@@ -51,7 +51,7 @@ def getHealthUnitStatusFromAPI(healthUnitId):
             healthUnitRecords.append(record)
 
     latestHealthUnitRecord = healthUnitRecords[len(healthUnitRecords)-1]
-    print("Your Current Location ",userPoint)
+    print("Your Current Location Latitude:", userPoint.latlng[0],"Longitude:",userPoint.latlng[1])
     print(" ")
     print("========Identified Information (Ontario Government Database Covid-19 Current Status)=========")
     print("Health Unit:", latestHealthUnitRecord['Reporting_PHU'])

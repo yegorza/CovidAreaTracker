@@ -43,22 +43,24 @@ def getHealthUnitStatusFromAPI(healthUnitId):
         print("=====================================")
         records = responseJson['result']['records']
 
-    lastStatusRecord = records[len(records)]
+    #lastStatusRecord = records[len(records)]
 
-    print("======HISTORY OF STATUSES======")
+    healthUnitRecords = []
     for record in records:
        #print("Record: ", record)
-       #Print out the health centre status based on user's location
-       if(record['Reporting_PHU_id'] == healthUnitId):
-           print("In your current location these are the requirements: ")
-           print("Health Unit Id: ", record['Reporting_PHU_id'], "Id: ", record['_id'],"Health Unit:", record['Reporting_PHU'])
-           print("Status: ", record['Status_PHU'])
-           print("Start Date: ",convertToReadableDate(record['start_date']))
-           print("End Date: ",convertToReadableDate(record['end_date']))
-           print("===========================")
-       #else:
-           #print("SKIPPING: Id: ", record['_id'],"Health Unit:", record['Reporting_PHU'],"Status: ", record['Status_PHU'],"Health Unit Id: ", record['Reporting_PHU_id']) 
+       #Print out the health centre status based on user's location\
+       if(record['Reporting_PHU_id'] == healthUnitId):    
+            healthUnitRecords.append(record)
 
+    latestHealthUnitRecord = healthUnitRecords[len(healthUnitRecords)-1]
+    print("Your Current Location ",userPoint)
+    print(" ")
+    print("========Identified Information (Ontario Government Database Covid-19 Current Status)=========")
+    print("Health Unit:", latestHealthUnitRecord['Reporting_PHU'])
+    print("Latest Location Status For Covid-19: ", latestHealthUnitRecord['Status_PHU'])
+    print("Start Date: ",convertToReadableDate(latestHealthUnitRecord['start_date']))
+    print("End Date: ",convertToReadableDate(latestHealthUnitRecord['end_date']))
+    print("===========================")
 
 #Get User Point
 userPoint = geocoder.ip('')
